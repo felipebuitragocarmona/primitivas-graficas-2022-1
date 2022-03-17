@@ -17,6 +17,7 @@ public class ClasePrimitivasGraficas {
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.println("Hola a todos los de POO");
+        System.out.println("buenas buenas soy jean");
     }
     
 }
