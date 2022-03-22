@@ -5,7 +5,13 @@
  */
 package claseprimitivasgraficas;
 
+import Modelos.Circulo;
+import Modelos.Cuadrado;
 import Modelos.FiguraGeometrica;
+import Modelos.Imagen;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.LinkedList;
 
 /**
@@ -13,13 +19,68 @@ import java.util.LinkedList;
  * @author pipet
  */
 public class Lienzo extends javax.swing.JPanel {
+
     private LinkedList<FiguraGeometrica> figuras;
+
     /**
      * Creates new form Lienzo
      */
     public Lienzo() {
         initComponents();
-        this.figuras=new LinkedList<>();
+        this.figuras = new LinkedList<>();
+    }
+
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        dibujarFiguras(g);
+    }
+    public void dibujarFiguras(Graphics g){
+        for(FiguraGeometrica figuraActual: this.figuras){
+            if (figuraActual instanceof Cuadrado) {
+                dibujarCuadrado(g,(Cuadrado) figuraActual);
+            }else if (figuraActual instanceof Circulo) {
+                dibujarCirculo(g, (Circulo) figuraActual);
+            }else if (figuraActual instanceof Imagen) {
+                dibujarImagen(g,(Imagen)figuraActual);
+            }
+        }
+    }
+    public void dibujarCuadrado(Graphics g,Cuadrado elCuadrado){
+        g.setColor(elCuadrado.getColorRelleno());
+        g.fillRect(elCuadrado.getX(), 
+                   elCuadrado.getY(), 
+                   elCuadrado.getLado(), 
+                   elCuadrado.getLado());
+        g.setColor(elCuadrado.getBorde());
+        g.drawRect(elCuadrado.getX(), 
+                   elCuadrado.getY(), 
+                   elCuadrado.getLado(), 
+                   elCuadrado.getLado());
+    }
+    public void dibujarCirculo(Graphics g,Circulo elCirculo){
+        g.setColor(elCirculo.getColorRelleno());
+        g.drawOval(elCirculo.getX(),
+                   elCirculo.getY(),
+                   elCirculo.getRadio(),
+                   elCirculo.getRadio());
+        
+        g.setColor(elCirculo.getBorde());
+        g.fillOval(elCirculo.getX(),
+                   elCirculo.getY(),
+                   elCirculo.getRadio(),
+                   elCirculo.getRadio());
+        
+    }
+    public void dibujarImagen(Graphics g,Imagen laImagen){
+    Toolkit t = Toolkit.getDefaultToolkit ();
+    Image imagen = t.getImage (laImagen.getRuta());
+    g.drawImage(imagen,
+                laImagen.getX(),
+                laImagen.getY(),
+                laImagen.getAncho(),
+                laImagen.getAlto(),
+                this);
     }
 
     /**

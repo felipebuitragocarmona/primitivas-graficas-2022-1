@@ -5,6 +5,11 @@
  */
 package claseprimitivasgraficas;
 
+import Modelos.Circulo;
+import Modelos.Cuadrado;
+import Modelos.Imagen;
+import java.awt.Color;
+
 /**
  *
  * @author pipet
@@ -16,6 +21,12 @@ public class Inicio extends javax.swing.JFrame {
      */
     public Inicio() {
         initComponents();
+        Cuadrado cuadrado1= new Cuadrado(10, 10, Color.black, Color.red, 90);
+        Circulo circulo1=new Circulo(100, 10, Color.blue, Color.green, 70);
+        Imagen elHongo=new Imagen(10, 100, "src/Imagenes/hongo.png", 64, 64);
+        this.lienzo1.getFiguras().add(cuadrado1);
+        this.lienzo1.getFiguras().add(circulo1);
+        this.lienzo1.getFiguras().add(elHongo);
     }
 
     /**
@@ -41,7 +52,7 @@ public class Inicio extends javax.swing.JFrame {
         );
         lienzo1Layout.setVerticalGroup(
             lienzo1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 370, Short.MAX_VALUE)
+            .addGap(0, 420, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -58,7 +69,7 @@ public class Inicio extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lienzo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
