@@ -5,17 +5,21 @@
  */
 package claseprimitivasgraficas;
 
+import Modelos.FiguraGeometrica;
+import java.util.LinkedList;
+
 /**
  *
  * @author pipet
  */
 public class Lienzo extends javax.swing.JPanel {
-
+    private LinkedList<FiguraGeometrica> figuras;
     /**
      * Creates new form Lienzo
      */
     public Lienzo() {
         initComponents();
+        this.figuras=new LinkedList<>();
     }
 
     /**
@@ -38,6 +42,20 @@ public class Lienzo extends javax.swing.JPanel {
             .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    /**
+     * @return the figuras
+     */
+    public LinkedList<FiguraGeometrica> getFiguras() {
+        return figuras;
+    }
+
+    /**
+     * @param figuras the figuras to set
+     */
+    public void setFiguras(LinkedList<FiguraGeometrica> figuras) {
+        this.figuras = figuras;
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
